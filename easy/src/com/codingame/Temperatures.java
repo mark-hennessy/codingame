@@ -22,13 +22,18 @@ class Temperatures {
             return;
         }
 
-        int[] sortedValues = Arrays.stream(TEMPS.split(" ")).mapToInt(Integer::parseInt).sorted().toArray();
+        int[] sortedValues = Arrays.stream(TEMPS.split(" "))
+                .mapToInt(Integer::parseInt)
+                .sorted()
+                .toArray();
+
         int largestNegative = -5527;
         int smallestPositive = 5527;
         for (int value : sortedValues) {
             if (value < 0) {
                 largestNegative = value;
-            } else {
+            }
+            else {
                 smallestPositive = value;
                 break;
             }
@@ -36,7 +41,8 @@ class Temperatures {
 
         if (smallestPositive <= abs(largestNegative)) {
             System.out.println(smallestPositive);
-        } else {
+        }
+        else {
             System.out.println(largestNegative);
         }
     }

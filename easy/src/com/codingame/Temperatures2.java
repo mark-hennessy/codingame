@@ -22,16 +22,22 @@ class Temperatures2 {
             return;
         }
 
-        Integer[] sortedValues = Arrays.stream(TEMPS.split(" ")).mapToInt(Integer::parseInt).boxed()
+        Integer[] sortedValues = Arrays.stream(TEMPS.split(" "))
+                .mapToInt(Integer::parseInt)
+                .boxed()
                 .sorted((v1, v2) -> {
                     if (abs(v1) < abs(v2)) {
                         return -1;
-                    } else if (abs(v1) > abs(v2)) {
+                    }
+                    else if (abs(v1) > abs(v2)) {
                         return 1;
-                    } else {
+                    }
+                    else {
                         return v1 > 0 ? -1 : 1;
                     }
-                }).toArray(Integer[]::new);
+                })
+                .toArray(Integer[]::new);
+
         System.out.println(sortedValues[0]);
     }
 
