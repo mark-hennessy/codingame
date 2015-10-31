@@ -78,17 +78,17 @@ class Defibrillators {
         in.nextLine();
         Location currentLocation = new Location(null, null, longitude, latitude);
 
-        int defibLocationDataRowCount = in.nextInt();
+        int defibrillatorLocationDataRowCount = in.nextInt();
         in.nextLine();
-        List<Location> defibLocations = new ArrayList<>();
-        for (int i = 0; i < defibLocationDataRowCount; i++) {
+        List<Location> defibrillatorLocations = new ArrayList<>();
+        for (int i = 0; i < defibrillatorLocationDataRowCount; i++) {
             String locationData = in.nextLine();
             String[] tokens = locationData.split(";");
-            defibLocations.add(new Location(tokens[1], tokens[2], tokens[4], tokens[5]));
+            defibrillatorLocations.add(new Location(tokens[1], tokens[2], tokens[4], tokens[5]));
         }
 
-        Location closestLocation = defibLocations.stream()
-                .sorted((a, b) -> a.distance(currentLocation) < b.distance(currentLocation) ? -1 : 1)
+        Location closestLocation = defibrillatorLocations.stream()
+                .sorted((a, b) -> Double.compare(a.distance(currentLocation), b.distance(currentLocation)))
                 .findFirst()
                 .get();
 
