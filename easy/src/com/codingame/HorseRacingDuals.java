@@ -4,8 +4,6 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 import java.util.stream.IntStream.Builder;
 
-import static java.lang.Math.abs;
-
 /**
  * Auto-generated code below aims at helping you parse
  * the standard input according to the problem statement.
@@ -24,7 +22,7 @@ class HorseRacingDuals {
 
         int smallestDelta = -1;
         for (int i = 1; i < strengths.length; i++) {
-            int delta = abs(strengths[i - 1] - strengths[i]);
+            int delta = strengths[i] - strengths[i - 1];
             if (smallestDelta < 0 || delta < smallestDelta) {
                 smallestDelta = delta;
             }
