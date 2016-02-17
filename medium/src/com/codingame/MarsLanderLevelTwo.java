@@ -18,6 +18,12 @@ class MarsLanderLevelTwo {
     }
 
     private static void debug() {
+        List<String> list = new ArrayList<>();
+        list.add("string");
+        String[] strings = {"1", "2"};
+        for (String s : strings) {
+            
+        }
     }
 
     public static class Game {
