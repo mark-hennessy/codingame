@@ -1,0 +1,72 @@
+Java 8 makes more changes to java than there have been in the last 8 years combined.
+I read somewhere that there are 200+ new features added. 
+Features fall into two categories: 1) core language additions and 2) quality of life improvements.
+
+Examples of quality of life improvements:
+Streamlined exception handling
+    You can catch multiple exceptions in the same catch block.
+    You can declare a file resource in the parens of a try-statement, and java will automatically close the file stream if there is an error. 
+    This means that there is no need for a try/catch nested in a try/catch nested in a try/catch to close the file stream.
+
+My talk today is just about the following core language additions: 
+Annotations, Interfaces, Lambdas, Function references, Streams.
+
+Annotations
+	Java 8 introduces method parameter level annotations
+	    Example: @NotNull, ships with Java 8, checked at compile time just like @Override
+	    @FunctionalInterface, I'll talk more about this later
+	    Create your own!
+
+Interfaces
+	Multiple inheritance
+		Method vs state inheritance
+	Default methods
+		Template pattern
+		Keep helper methods in context and reduce need for utility classes
+	Static methods
+		Limited to other static methods
+
+Pull up IDE and start live coding example
+
+@FunctionalInterface
+	Only 1 abstract method, any number of default and static methods
+	Create FunctionalInterface, assign lambda to it
+	Java provides pre-made functional interfaces: Function, BiFunction, Predicate, Consumer, Supplier, and many more
+
+	https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
+
+Lambdas
+	Single line syntax
+	Verbose syntax
+	Never use a lambda as a wrapper for another method call, use a method reference instead
+
+Method references
+	ContainingClass::staticMethodName
+	containingObject::instanceMethodName
+	ContainingType::methodName
+	ClassName::new, assigns well to a Supplier (i.e. factory) functional interface
+
+	https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
+
+Lambdas & Method reference Summary
+    Allow methods to be passed around as first order objects
+    Compiler optimized, DO NOT have the overhead of anonymous inner classes
+
+Streams
+	Used to query data structures like SQL
+	The stream API allows you to filter, convert, transform, visit, aggregate data, and much more
+	The Java collection API has been re-written to support streams. Simply call the .stream() method to start streaming
+	Arrays can also be streamed via the Arrays.stream method
+	Syntax relies on method chaining
+	Supports threading / CPU core parallelism natively. Just call parallelStream()
+	Streams can be infinite / procedurally generated
+	Some stream methods are terminal, others are not
+	Streams are not reusable. An exception will be thrown if you try to use a stream after a terminal method has been called
+	Demo!
+
+Optional<T>
+	Introduced to minimize NPEs
+	Forces programmers to think about and handle the null case
+	Should not be used as parameters to a method! That's what @NotNull is for
+	Should only be used in return types
+	Notable methods: isPresent, get() (throws exception if null), ifPresent(Consumer), orElse(defaultValue)
