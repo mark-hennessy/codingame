@@ -1,10 +1,10 @@
-# codingame
+# Codingame Puzzle Solutions in Java 8
 
 Java 8 solutions for codingame puzzles/challenges.
 
 www.codingame.com
 
-## License & copyright
+## License & Copyright
 
 © Mark Hennessy
 
